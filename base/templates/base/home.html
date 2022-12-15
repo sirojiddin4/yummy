@@ -1,0 +1,31 @@
+{% extends 'base/main.html' %}
+
+{% load static %}
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<body>
+<H1>Welcome to yummy!</H1>
+<div class="menu">
+<h2>Menu</h2>
+
+    {% for menu_item in menu_items %}
+      
+           <p> {{ menu_item.title}} -- ${{menu_item.price}} </p>
+           
+            
+    {% endfor %}</div>
+    <div class="ingredients">
+    <h2>Ingredients</h2>  
+    {% for q in ingredient %}
+    <p >{{q.name}} -- {{q.quantity}} -- {{q.unit}} -- {{q.price_per_unit}}</p>
+    {% endfor %}</div>
+
+    <div class="purchases">
+    <h2>Purchases</h2>  
+    {% for w in purchase %}
+    <p class="purchase">{{w.menu_item.title}} -- {{w.menu_item.price}} -- {{w.timestamp}}</p>
+    {% endfor %}
+</body>
+{% endblock %}</div>

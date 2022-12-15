@@ -1,0 +1,8 @@
+<body><a href="{% url 'menuitemlist' %}">Menu</a> <a href="{% url 'ingredientlist' %}">Ingredients</a> <a href="{% url 'purchaselist' %}">Purchases</a> 
+<a href="{% url 'report' %}"> Reports </a>
+<P><a href="{% url 'home' %}"> Back to homepage </a> </P>
+<P>
+{% if user.is_authenticated %}
+<a href="/logout"> Logout </a>
+{% endif %}</P>
+<hr></body>

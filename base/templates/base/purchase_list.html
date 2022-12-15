@@ -1,0 +1,21 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+
+<a href="{% url 'purchasecreate' %}"> Add Purchase </a>
+
+<p><table>
+<tr><th>Dish name</th><th>Price</th><th>Time</th></tr>
+{% for q in purchase_list %}
+<tr>
+ 
+    <td>   {{q.menu_item.title|stringformat:'s'}}</td>
+    <td>${{q.menu_item.price|stringformat:".2f"}}</td><td>{{q.timestamp}}</td></td><td><a href="{% url 'purchasedelete' q.id%}">Delete</a></td>
+    
+</tr>
+
+{% endfor %}
+
+</table></p>
+
+{% endblock %}

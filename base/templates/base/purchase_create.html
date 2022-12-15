@@ -1,0 +1,25 @@
+{% extends 'base/main.html' %} 
+
+
+
+{% block content %}
+    <form method="post">
+        <div>
+        {% csrf_token %}
+        {{form.as_p}}
+        <p>
+            <label for="menu_item">Menu item:</label>
+            <select name="menu_item" id="menu_item" required>
+                <option value selected>Choose food</option>
+            {% for q in menu_items %}
+            {{ q.title }}
+            {% endfor %}
+            {% for menu_item in menu_items %}
+                <option value={{ menu_item.id}}>{{menu_item.title}}</option>
+        {% endfor %}
+        </select>
+        </p>
+        <input type="submit" value="Submit"/>
+        </div>
+    </form>
+{% endblock %}

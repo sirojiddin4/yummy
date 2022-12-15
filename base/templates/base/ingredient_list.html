@@ -1,0 +1,21 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+
+<a href="{% url 'ingredientcreate' %}"> Add Ingredient </a>
+
+<p><table>
+<tr><th>Ingredient name</th><th>Quantity</th><th>Unit</th><th>Price per unit</th></tr>
+{% for q in ingredient_list %}
+<tr>
+ 
+    <td>   <a href="{% url 'ingredientupdate' q.id %}">{{q.name}}</a></td>
+    <td>{{q.quantity}}</td> <td>{{q.unit}}</td> <td>${{q.price_per_unit}}</td><td><td><a href="{% url 'ingredientdelete' q.id %}">Delete</a></td></td>
+    
+</tr>
+
+{% endfor %}
+
+</table></p>
+
+{% endblock %}

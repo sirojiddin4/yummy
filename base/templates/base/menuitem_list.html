@@ -1,0 +1,23 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+
+<a href="{% url 'menuitemcreate' %}"> Add Menu </a>  <a href="{% url 'recipecreate' %}">Add Recipe</a> 
+
+<p><table>
+<tr><th>Dish Name</th><th>Price</th></tr>
+{% for q in menuitem_list %}
+<tr>
+ 
+    <td>   <a href="{% url 'menuitemupdate' q.id %}">{{q.title}}</a></td>
+    <td>${{q.price}}</td><td>{% for recipe_requirement in q.reciperequirement_set.all %}
+        {{ recipe_requirement.quantity }} {{recipe_requirement.ingredient.unit }} {{ recipe_requirement.ingredient.name }}
+    {% endfor %}
+</td><td><a href="{% url 'menudelete' q.id %}">Delete</a></td>
+    </tr>
+    
+{% endfor %}
+
+</table></p>
+
+{% endblock %}
